@@ -24,7 +24,7 @@
             <div>
 
                 <input type="text" name="find_movies" id="find_movies" placeholder="Search Show">
-                <input type="submit" onclick="find_movies_btn()">
+                <button type="submit" onclick="find_movies_btn()">Search</button>
 
             </div>
 
@@ -38,10 +38,11 @@
 
                         //Declare Variables
                         var word_input = document.getElementById("find_movies").value;
-                        var endpoint = " https://api.tvmaze.com/search/shows";
+                        var endpoint = "https://api.tvmaze.com/search/shows";
                         var requested_endpoint = endpoint + "?q=" + word_input;
-                        
 
+                        var output = "";
+                        
                         // Create an XMLHttpRequest object
                         const xhttp = new XMLHttpRequest();
                         xhttp.onreadystatechange = function() {
@@ -50,11 +51,11 @@
                             }        
                         // Define a callback function
                         xhttp.onload = function() {
-                            document.getElementById("output_movies").innerHTML =
+                            document.getElementById("output_movies").innerHTML = 
                             this.responseText;
                             }
                         // Send a request    
-                        xhttp.open("post", requested_endpoint, true);
+                        xhttp.open("GET", output, true);
                         xhttp.send();
 
                         }
