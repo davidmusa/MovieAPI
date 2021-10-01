@@ -58,19 +58,19 @@
 
                                     var output_html = "<div>" + name + "</div>";
 
-                                    console.log(output_html);
-                            } 
-                        }           
-                        // Define a callback function
-                        xhttp.onload = function() {
-                            document.getElementById("output_shows").innerHTML = 
-                            this.responseText;
-                            }
+                                    var shows="";
+                                    var currentHTML = document.getElementById("output_shows").innertHTML;
+                                    curentHTML += shows;
+                                }
+                            
+                                document.getElementById("output_shows").innerHTML = this.responseText;
+
+                                }
+                            }       
                         // Send a request    
-                        xhttp.open("GET", output, true);
+                        xhttp.open("GET", requested_endpoint, true);
                         xhttp.send();
 
-                        }
                     }
 
                 </script>
