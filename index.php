@@ -23,23 +23,25 @@
 
             <div>
 
-                <input type="text" name="find_movies" id="find_movies" placeholder="Search Show">
-                <button type="submit" onclick="find_movies_btn()">Search</button>
+                <input type="text" name="find_shows" id="find_shows" placeholder="Search Show">
+                <button type="submit" onclick="find_shows_btn()">Search</button>
 
             </div>
 
-            <div id="output_movies">
+            <div id="output_shows">
 
             </div>
 
                 <script>
 
-                    function find_movies_btn() {
+                    function find_shows_btn() {
 
                         //Declare Variables
-                        var word_input = document.getElementById("find_movies").value;
+                        var word_input = document.getElementById("find_shows").value;
                         var endpoint = "https://api.tvmaze.com/search/shows";
                         var requested_endpoint = endpoint + "?q=" + word_input;
+
+                        console.log(requested_endpoint);
 
                         var output = "";
                         
@@ -48,10 +50,20 @@
                         xhttp.onreadystatechange = function() {
                             if (this.readyState == 4 && this.status == 200) {
                                 output = JSON.parse(xhttp.responseText);
-                            }        
+
+                                var number_shows = output.lenght;
+                                for (var i = 0; i < number_shows; i++){
+
+                                    var name = output[i]['name'];
+
+                                    var output_html = "<div>" + name + "</div>";
+
+                                    console.log(output_html);
+                            } 
+                        }           
                         // Define a callback function
                         xhttp.onload = function() {
-                            document.getElementById("output_movies").innerHTML = 
+                            document.getElementById("output_shows").innerHTML = 
                             this.responseText;
                             }
                         // Send a request    
